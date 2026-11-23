@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Bano - Bilingual Health App</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="lang-switch">
+                <button id="langEn" class="lang-btn" onclick="setLanguage('en')">English</button>
+                <button id="langHi" class="lang-btn active" onclick="setLanguage('hi')">हिंदी</button>
+            </div>
+            <h1 id="appTitle">🌱 Healthy Bano</h1>
+            <p id="appSubtitle">आपका स्वास्थ्य, आपकी शक्ति | 100% नेचुरल और साइंटिफिक तरीका</p>
+            <div class="header-icons">
+                <span class="material-icons">favorite</span>
+                <span class="material-icons">self_improvement</span>
+                <span class="material-icons">eco</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card full-width">
+            <div class="card-icon">
+                <span class="material-icons">calculate</span>
+            </div>
+            <h3 id="bmiCardTitle">🔢 अपना BMI कैलकुलेट करें</h3>
+            <div class="grid bmi-input-grid">
+                <div class="input-group">
+                    <label id="ageLabel">आपकी उम्र (साल)</label>
+                    <input type="number" id="age" placeholder="जैसे: 25" min="1" max="120">
+                </div>
+                <div class="input-group">
+                    <label id="weightLabel">वजन (किलो)</label>
+                    <input type="number" id="weight" placeholder="जैसे: 70" step="0.1">
+                </div>
+                <div class="input-group">
+                    <label id="heightLabel">ऊंचाई (सेमी)</label>
+                    <input type="number" id="height" placeholder="जैसे: 170" step="0.1">
+                </div>
+            </div>
+            <button onclick="calculateBMI()" id="calcBtn" class="primary-btn">
+                <span class="material-icons icon-left">search</span> मेरा BMI निकालें
+            </button>
+            <div id="bmiResult" class="result-box" style="display:none;">
+                <h4 id="resultHeading">📊 आपका रिजल्ट:</h4>
+                <p class="highlight" id="bmiValue"></p>
+                <p id="bmiCategory"></p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="bmiProgress"></div>
+                </div>
+                <p id="bmiAdvice"></p>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="material-icons card-icon">info</span>
+            <h3 id="rangeTitle">📊 BMI Range तालिका</h3>
+            <div class="info-box">
+                <p id="rangeUnderweight"><strong style="color: #f44336;">कम वजन:</strong> 18.5 से कम</p>
+                <p id="rangeNormal"><strong style="color: #4caf50;">सामान्य:</strong> 18.5 – 24.9</p>
+                <p id="rangeOverweight"><strong style="color: #ff9800;">अधिक वजन:</strong> 25 – 29.9</p>
+                <p id="rangeObese"><strong style="color: #d32f2f;">मोटापा:</strong> 30 या उससे ज्यादा</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="material-icons card-icon">restaurant</span>
+            <h3 id="dietTitle">🥗 आपका डाइट प्लान (BMI के अनुसार)</h3>
+            <div id="dietPlan">
+                <p id="dietPlaceholder">पहले BMI कैलकुलेट करें</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="material-icons card-icon">fitness_center</span>
+            <h3 id="exerciseTitle">💪 एक्सरसाइज प्लान</h3>
+            <div id="exercisePlan">
+                <p id="exercisePlaceholder">पहले BMI कैलकुलेट करें</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <span class="material-icons card-icon">timeline</span>
+            <h3 id="timelineTitle">⏰ फिटनेस टाइमलाइन</h3>
+            <div id="timeline">
+                <p id="timelinePlaceholder">पहले BMI कैलकुलेट करें</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 id="trackerTitle">📱 डेली हेल्थ ट्रैकर (Data Save होगा)</h3>
+            <div class="tracker-grid">
+                <div class="tracker-item">
+                    <span class="material-icons tracker-icon">water_drop</span>
+                    <div class="tracker-value" id="waterCount">0</div>
+                    <div id="waterLabel">गिलास पानी</div>
+                    <button onclick="addWater()" id="waterBtn" class="tracker-action-btn">+1 गिलास</button>
+                </div>
+                <div class="tracker-item">
+                    <span class="material-icons tracker-icon">directions_walk</span>
+                    <div class="tracker-value" id="stepCount">0</div>
+                    <div id="stepLabel">कदम</div>
+                    <button onclick="addSteps()" id="stepBtn" class="tracker-action-btn">+100 कदम</button>
+                </div>
+                <div class="tracker-item">
+                    <span class="material-icons tracker-icon">bedtime</span>
+                    <div class="tracker-value" id="sleepHours">0</div>
+                    <div id="sleepLabel">घंटे नींद</div>
+                    <button onclick="addSleep()" id="sleepBtn" class="tracker-action-btn">+1 घंटा</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <span class="material-icons card-icon">lightbulb</span>
+                <h3 id="tipsTitle">💡 हेल्थ टिप्स</h3>
+                <div id="healthTip">
+                    <p>रोज सुबह गुनगुना पानी पिएं</p>
+                </div>
+                <button onclick="newTip()" id="tipBtn" class="secondary-btn">नई टिप देखें</button>
+            </div>
+
+            <div class="card">
+                <span class="material-icons card-icon">history</span>
+                <h3 id="historyTitle">📜 BMI हिस्ट्री (पिछले 5)</h3>
+                <div id="bmiHistory" class="history-list"></div>
+                <button onclick="clearHistory()" id="clearHistoryBtn" class="secondary-btn danger-btn">हिस्ट्री साफ करें</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 id="yogaTitle">🧘 योगा & मेडिटेशन</h3>
+            <div class="diet-item">
+                <span class="material-icons">wb_sunny</span>
+                <div>
+                    <strong id="suryaName">सूर्य नमस्कार</strong>
+                    <p id="suryaDesc">12 मिनट, 12 लाभ</p>
+                </div>
+            </div>
+            <div class="diet-item">
+                <span class="material-icons">air</span>
+                <div>
+                    <strong id="pranayamName">प्राणायाम</strong>
+                    <p id="pranayamDesc">10 मिनट, शांत मन</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p id="footerText">🌿 Healthy Bano - प्रकृति का तोहफा</p>
+            <p id="footerSubtext">संकल्प करो, स्वस्थ बनो | 100% आयुर्वेदिक तरीका</p>
+        </div>
+    </div>
+
+    <script src="js/script.js" defer></script>
+</body>
+</html>

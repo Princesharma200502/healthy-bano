@@ -1,0 +1,330 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+    color: #1b5e20;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background: linear-gradient(rgba(46, 125, 50, 0.9), rgba(27, 94, 32, 0.9)),
+                url('https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-size: cover;
+    color: white;
+    padding: 40px 20px;
+    border-radius: 0 0 50px 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.header-icons {
+    margin-top: 20px;
+}
+
+.header-icons .material-icons {
+    font-size: 40px;
+    margin-right: 10px;
+}
+
+.lang-switch {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.lang-btn {
+    background: white;
+    color: #2e7d32;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1em;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.lang-btn.active {
+    background: #2e7d32;
+    color: white;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.bmi-input-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(46, 125, 50, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(46, 125, 50, 0.25);
+}
+
+.card.full-width {
+    grid-column: 1 / -1;
+}
+
+.card-icon {
+    font-size: 3em;
+    color: #2e7d32;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color: #1b5e20;
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #a5d6a7;
+    padding-bottom: 10px;
+}
+
+.input-group {
+    margin: 20px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+input, select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #c8e6c9;
+    border-radius: 15px;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    padding: 15px 30px;
+    width: 100%;
+}
+
+.secondary-btn {
+    background: #2e7d32;
+    color: white;
+    padding: 15px 20px;
+    width: 100%;
+}
+
+.danger-btn {
+    background: #d32f2f;
+}
+
+button:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.4);
+}
+
+button.secondary-btn:hover,
+button.danger-btn:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.icon-left {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.result-box {
+    background: #e8f5e9;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    border-left: 5px solid #2e7d32;
+}
+
+.highlight {
+    color: #2e7d32;
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background: #c8e6c9;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #2e7d32);
+    width: 0%;
+    transition: width 1s ease;
+}
+
+.progress-fill.red {
+    background: linear-gradient(90deg, #ff5252, #d32f2f);
+}
+
+.diet-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin: 10px 0;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+}
+
+.diet-item .material-icons {
+    color: #2e7d32;
+    margin-right: 15px;
+    font-size: 28px;
+}
+
+.exercise-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: white;
+    margin: 8px 0;
+    border-radius: 12px;
+}
+
+.exercise-time {
+    background: #2e7d32;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.tracker-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.tracker-item {
+    text-align: center;
+    padding: 15px;
+    background: white;
+    border-radius: 15px;
+}
+
+.tracker-icon {
+    color: #2196f3;
+    font-size: 40px;
+}
+
+.tracker-item:nth-child(2) .tracker-icon {
+    color: #ff9800;
+}
+
+.tracker-item:nth-child(3) .tracker-icon {
+    color: #4caf50;
+}
+
+.tracker-value {
+    font-size: 2em;
+    font-weight: 700;
+    color: #2e7d32;
+    margin: 10px 0;
+}
+
+.tracker-action-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border-radius: 18px;
+    background: #2e7d32;
+    color: white;
+}
+
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 15px;
+}
+
+.history-item {
+    background: #f1f8e9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 0.9em;
+    border-left: 3px solid #2e7d32;
+}
+
+.footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+    background: #1b5e20;
+    color: white;
+    border-radius: 50px 50px 0 0;
+}
+
+.info-box {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+@media (max-width: 768px) {
+    .header h1 { font-size: 2em; }
+    .grid { grid-template-columns: 1fr; }
+    .tracker-grid { grid-template-columns: 1fr; }
+    .bmi-input-grid { grid-template-columns: 1fr; }
+}
